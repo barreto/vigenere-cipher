@@ -1,36 +1,9 @@
-const readlineSync = require("readline-sync");
 const menu = require("./constants/menu");
 const options = require("./constants/options");
+const getValidOption = require("./inputHelpers/getValidOption");
+const getVigeneresInfos = require("./inputHelpers/getVigeneresInfos");
+const waitForEnter = require("./inputHelpers/waitForEnter");
 const vigenereCipher = require("./utils/vigenereCipher");
-
-readlineSync.setDefaultOptions({ encoding: "utf8" });
-
-function getValidOption(question) {
-  let option;
-  let isValidOption;
-  const validOptions = Object.values(options);
-
-  do {
-    option = readlineSync.question(question);
-    isValidOption = validOptions.includes(option);
-  } while (!isValidOption);
-  return option;
-}
-
-function getValidText(question) {
-  let text;
-  let isValidOption;
-
-  do {
-    text = readlineSync.question(question);
-    isValidOption = Boolean(text.trim().length);
-  } while (!isValidOption);
-  return text;
-}
-
-function waitForEnter() {
-  readlineSync.question("\nPara continuar pressione ENTER...");
-}
 
 (async function Main() {
   let finishApp = false;
@@ -43,9 +16,8 @@ function waitForEnter() {
     switch (option) {
       case options.cypherOption:
         {
-          const text = getValidText("Digite o texto: ");
-          const cipher = getValidText("Informe a cifra: ");
-          const result = vigenereCipher.encrypt(text, cipher);
+          const { text, key } = getVigeneresInfos();
+          const result = vigenereCipher.encrypt(text, key);
           console.log(`\nResultado: ${result}: \n`);
           waitForEnter();
         }
@@ -53,9 +25,8 @@ function waitForEnter() {
 
       case options.decypherOption:
         {
-          const text = getValidText("Digite o texto: ");
-          const cipher = getValidText("Informe a cifra: ");
-          const result = vigenereCipher.decrypt(text, cipher);
+          const { text, key } = getVigeneresInfos();
+          const result = vigenereCipher.decrypt(text, key);
           console.log(`\nResultado: ${result}: \n`);
           waitForEnter();
         }
