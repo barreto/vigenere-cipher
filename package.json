@@ -1,0 +1,23 @@
+{
+  "name": "vigenere-cipher",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "Vigenère's cipher application to encrypt and decrypt information",
+  "main": "index.js",
+  "keywords": [],
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barreto/vigenere-cipher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barreto/vigenere-cipher/issues"
+  },
+  "homepage": "https://github.com/barreto/vigenere-cipher#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
