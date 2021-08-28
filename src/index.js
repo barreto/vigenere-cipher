@@ -10,7 +10,7 @@ const vigenereCipher = require("./utils/vigenereCipher");
   let result;
 
   do {
-    console.log("\n[Vigenère's Cipher]: Code to implement Vigenere Cipher");
+    console.log("\n[Cifra de Vigenère]");
     console.log(menu);
     const option = getValidOption("Escolha uma das alternativas: ");
 
