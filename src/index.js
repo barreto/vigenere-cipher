@@ -7,9 +7,10 @@ const vigenereCipher = require("./utils/vigenereCipher");
 
 (async function Main() {
   let finishApp = false;
+  let result;
 
   do {
-    console.log("[Cifra de Vigenère]");
+    console.log("\n[Vigenère's Cipher]: Code to implement Vigenere Cipher");
     console.log(menu);
     const option = getValidOption("Escolha uma das alternativas: ");
 
@@ -17,8 +18,8 @@ const vigenereCipher = require("./utils/vigenereCipher");
       case options.cypherOption:
         {
           const { text, key } = getVigeneresInfos();
-          const result = vigenereCipher.encrypt(text, key);
-          console.log(`\nResultado: ${result}: \n`);
+          result = vigenereCipher.encrypt(text, key);
+          console.log(`\nResultado: ${result}\n`);
           waitForEnter();
         }
         break;
@@ -26,8 +27,8 @@ const vigenereCipher = require("./utils/vigenereCipher");
       case options.decypherOption:
         {
           const { text, key } = getVigeneresInfos();
-          const result = vigenereCipher.decrypt(text, key);
-          console.log(`\nResultado: ${result}: \n`);
+          result = vigenereCipher.decrypt(text, key);
+          console.log(`\nResultado: ${result}\n`);
           waitForEnter();
         }
         break;
