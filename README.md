@@ -28,7 +28,7 @@ Será disponibilizado um menu de opções semelhante ao da imagem abaixo:
 
 ![cli options](https://github.com/barreto/vigenere-cipher/blob/main/assets/img/cli-options.png?raw=true)
 
-Com exceção da opção ```0```, que encerrará o processo do CLI, as outras duas opções lhe pediram o texto e a cifra, logo em seguida o resultado será apresentado em tela.
+Com exceção da opção ```0```, que encerrará o processo do CLI, as outras duas opções lhe pedirão o texto e a cifra, logo em seguida o resultado será apresentado em tela.
 
 ### Retorno para o fluxo inicial
 Caso queira cifrar ou decifrar mais vezes pressione ```ENTER``` e o menu de opções lhe será apresentado novamente.
