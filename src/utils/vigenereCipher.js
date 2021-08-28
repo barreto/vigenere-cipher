@@ -1,5 +1,7 @@
 const emptySpace = "";
 const whiteSpace = " ";
+const alphabetLength = 26;
+const initialCharCodeOfASCII = "A".charCodeAt(0);
 
 /***
  * Make the cipher get the same length of text and capitalize the keyword.
@@ -72,8 +74,6 @@ function recoverOriginalAspects(
 }
 
 function encrypt(text, key) {
-  const alphabetLength = 26;
-  const initialCharCodeOfASCII = "A".charCodeAt(0);
   const { textArr, upperCasesIndexes, spacesIndexes } = standardizeText(text);
   const keyword = equalizeKey(textArr, key);
 
@@ -96,7 +96,26 @@ function encrypt(text, key) {
 }
 
 function decrypt(text, key) {
-  return key + text;
+  const { textArr, upperCasesIndexes, spacesIndexes } = standardizeText(text);
+  const keyword = equalizeKey(textArr, key);
+
+  let cipheredText = "";
+  for (let index = 0; index < textArr.length; index++) {
+    const textCharCode = textArr[index].charCodeAt(0);
+    const keyCharCode = keyword[index].charCodeAt(0);
+    const innerAlphabetCharCode =
+      (textCharCode - keyCharCode + alphabetLength) % alphabetLength;
+    const cipheredCharCode = initialCharCodeOfASCII + innerAlphabetCharCode;
+    cipheredText += String.fromCharCode(cipheredCharCode);
+  }
+
+  cipheredText = recoverOriginalAspects(
+    cipheredText,
+    upperCasesIndexes,
+    spacesIndexes
+  );
+
+  return cipheredText;
 }
 
 const vigenereCipher = { encrypt, decrypt };
